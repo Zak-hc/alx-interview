@@ -1,15 +1,14 @@
 #!/usr/bin/python3
-'''pascal'''
+'''
+pascal
+'''
 
 
 def pascal_triangle(n):
     if n < 0:
         return []
-    '''liste principal'''
     jdida = []
-    '''liste precedente'''
     pvs = []
-    '''liste jdida'''
     for i in range(n):
         prp = []
         for j in range(i+1):
