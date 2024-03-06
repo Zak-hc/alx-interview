@@ -7,6 +7,7 @@ pascal
 def pascal_triangle(n):
     if n < 0:
         return []
+
     jdida = []
     pvs = []
     for i in range(n):
@@ -18,4 +19,5 @@ def pascal_triangle(n):
                 pvs = jdida[i-1]
                 prp.append(pvs[j-1]+pvs[j])
         jdida.append(prp)
+
     return jdida
