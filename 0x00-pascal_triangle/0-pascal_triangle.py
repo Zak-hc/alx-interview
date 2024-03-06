@@ -10,6 +10,7 @@ def pascal_triangle(n):
 
     jdida = []
     pvs = []
+
     for i in range(n):
         prp = []
         for j in range(i+1):
