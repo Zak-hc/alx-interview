@@ -1,22 +1,27 @@
 #!/usr/bin/python3
 """
-pasacl function
+pascal
 """
 
 
 def pascal_triangle(n):
     """
-    ffffff
+    fun
     """
     if n <= 0:
         return []
 
-    triangle = []
+    jdida = []
+    pvs = []
 
     for i in range(n):
-        row = [1] * (i + 1)
-        for j in range(1, i):
-            row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j]
-        triangle.append(row)
+        prp = []
+        for j in range(i+1):
+            if j == 0 or i == j:
+                prp.append(1)
+            else:
+                pvs = jdida[i-1]
+                prp.append(pvs[j-1]+pvs[j])
+        jdida.append(prp)
 
-    return triangle
+    return jdida
