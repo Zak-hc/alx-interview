@@ -5,6 +5,9 @@ pasacl function
 
 
 def pascal_triangle(n):
+    """
+    ffffff
+    """
     if n <= 0:
         return []
 
