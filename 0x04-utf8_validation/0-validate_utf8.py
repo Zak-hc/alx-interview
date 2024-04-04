@@ -1,28 +1,33 @@
 #!/usr/bin/python3
+""" Write a method that determines if a given data set
+    represents a valid UTF-8 encoding.
 """
-UTF-8 Validacion
-"""
+from typing import List
 
 
-def validUTF8(data):
+def validUTF8(data: List[int]) -> bool:
+    """ Method that determines if a given data
+        set represents a valid UTF-8 encoding
     """
-    UTF-8 Validacion
-    """
-    available_bites = 0
-    for b in data:
-        if available_bites == 0:
-            if len(str(bin(b))) == 10 and str(bin(b)).startswith('0b110'):
-                available_bites = 1
-            elif len(str(bin(b))) == 10 and str(bin(b)).startswith('0b1110'):
-                available_bites = 2
-            elif len(str(bin(b))) == 10 and str(bin(b)).startswith('0b11110'):
-                available_bites = 3
-            elif str(bin(b))[::-1][7] == '1':
-                available_bites = 1
-                break
+    n_bytes = 0
+
+    for item in data:
+        item %= 256
+        if n_bytes == 0:
+            if (item >> 7) == 0b0:
+                continue
+
+            if (item >> 5) == 0b110:
+                n_bytes = 1
+            elif (item >> 4) == 0b1110:
+                n_bytes = 2
+            elif (item >> 3) == 0b11110:
+                n_bytes = 3
+            else:
+                return (False)
         else:
-            if not str(bin(b)).startswith('0b10'):
-                available_bites = 1
-                break
-            available_bites -= 1
-    return available_bites == 0
+            if (item >> 6) != 0b10:
+                return (False)
+            n_bytes -= 1
+
+    return (n_bytes == 0)
